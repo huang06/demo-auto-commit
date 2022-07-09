@@ -1,0 +1,16 @@
+---
+name: Push commit
+on: workflow_dispatch
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Create report file
+        run: date +%s > report.txt
+      - name: Commit report
+        run: |
+          git config --global user.name 'huang06'
+          git config --global user.email 'tom4996131207@gmail.com'
+          git commit -am "Automated report"
+          git push
